@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Number</title>
+</head>
+<body>
+	<h1>자바스크립트 Number</h1>
+	<div id="output"></div>
+
+	<script type="text/javascript">
+      var output = document.getElementById('output');
+      
+      // - 자바스크립트 숫자의 특징
+      // 1) 지수표기법 사용이 가능하다.
+      var x = 123e5; // 12300000
+      var y = 123e-5; // 0.00123
+      output.innerHTML += x + '<br>';
+      output.innerHTML += y + '<br>';
+      
+      // 2) 정수는 15자릿수로 표현된다.
+      x = 999999999999999;
+      y = 9999999999999999;
+      output.innerHTML += x + '<br>';
+      output.innerHTML += y + '<br>';
+      
+      // 3) 소숫점 연산은 100% 정확하지 않다.
+      x = 0.1 + 0.2;
+      output.innerHTML += x + '<br>';
+      // 해결책 : 정수 형태로 연산을 변환한다. ex)10을 곱해 정수로 변환해서 계산 후 다시 10을 나눠 출력
+      
+      // - 문자를 숫자로 변환 가능
+      // - parseInt() : 문자를 정수로 변환
+      output.innerHTML += parseInt('10 20 30') + '<br>'; // 10
+      output.innerHTML += parseInt('year 2030') + '<br>'; // NaN
+      output.innerHTML += parseInt('1.23') + '<br>'; // 1
+      
+      // - parseFloat : 문자를 실수로 변환
+      output.innerHTML += parseFloat('10 20 30') + '<br>'; // 10
+      output.innerHTML += parseFloat('year 2030') + '<br>'; // NaN
+      output.innerHTML += parseFloat('1.23') + '<br>'; // 1.23
+    </script>
+
+</body>
+</html>

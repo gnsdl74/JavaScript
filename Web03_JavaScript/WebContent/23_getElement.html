@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getElement</title>
+</head>
+<body>
+	<h1>HTML 요소(element)를 찾는 방법</h1>
+	<p id="p1">단락1</p>
+	<p id="p2">단락2</p>
+	<p class="c1">단락3</p>
+	<p class="c1">단락4</p>
+
+
+	<script type="text/javascript">
+    // 자바스크립트를 사용하여 HTML element를 찾는 방법 :
+    // 1. getElementById('id')
+    // 2. getElementByTagName('tagName')
+    // 3. getElementByClassName('className')
+    // 4. CSS 선택자 : querySelectorAll('선택자'), querySelector('선택자')
+    // 5. HTML object collection : body, form, images, ...
+
+    document.getElementById('p1').style.backgroundColor = 'lightgreen';
+
+    // P 태그를 찾아서 배경색 변경
+    var ps = document.getElementsByTagName('p');
+    for (var i = 0; i < ps.length; i++) {
+      ps[i].style.backgroundColor = 'lightblue';
+    }
+
+    // class 'c1'을 찾아서 배경색 변경
+    ps = document.getElementsByClassName('c1');
+    for (var i = 0; i < ps.length; i++) {
+      ps[i].style.backgroundColor = 'cyan';
+    }
+    
+    // CSS 선택자를 찾아서 배경색 편집
+    document.querySelector('.c1').style.backgroundColor = 'yellow'; // 하나만 선택 후 변경
+    ps = document.querySelectorAll('.c1'); // 배열형태로 모든 c1 클래스 선택
+    for(var i = 0; i < ps.length; i++) {
+      ps[i].innerHTML = '재밌으시죠?';
+    }
+  </script>
+</body>
+</html>

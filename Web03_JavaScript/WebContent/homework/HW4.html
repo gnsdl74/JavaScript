@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HW4</title>
+</head>
+<body>
+	<h1>질럿과 마린의 대결!</h1>
+	<button onclick="attackZ()">질럿 공격</button>
+	<button onclick="attackM()">마린 공격</button>
+	<div id="output"></div>
+
+	<script type="text/javascript">
+    var output = document.getElementById('output');
+
+    // 생성자 함수
+    function Unit(name, hp, power, defence) {
+      this.name = name;
+      this.hp = hp;
+      this.power = power;
+      this.defence = defence;
+
+      this.attack = function(unit) {
+        // 예외처리 1 : damage가 음수가 되면 0의 값으로 저장되도록
+        var damage = this.power - unit.defence; // 공격자의 공격력 - 방어자의 방어력 = 데미지
+        if (damage <= 0) { // 방어자의 방어력이 공격자의 공격력보다 높을 경우
+          damage = 0;
+        }
+        unit.hp = unit.hp - damage; // 공격당한 유닛의 HP - 데미지 = 현재 HP
+
+        // 예외처리 2 : 공격당한 유닛의 hp가 0이하가 되면 alert로 유닛이 사망했음을 출력
+        if (unit.hp <= 0) {
+          unit.hp = 0;
+          alert(unit.name + '의 HP가 ' + unit.hp + '이 되었다.\n눈앞이 깜깜해졌다...');
+          output.innerHTML = ''; // output 내용 초기화
+          return;
+        }
+        output.innerHTML += this.name + '이(가) 공격했다. <br>';
+        output.innerHTML += unit.name + '(은)는 공격을 받았다. <br>';
+        output.innerHTML += unit.name + '(은)는 ' + damage + '의 공격을 받았다. <br>';
+        output.innerHTML += unit.name + '의 남은 HP : ' + unit.hp + '<br>';
+        output.innerHTML += '<hr>';
+
+      } // end attack()	  
+    } // end Unit()
+
+    // 객체 선언
+    var zilot = new Unit('질럿', 100, 10, 5);
+    var marine = new Unit('마린', 50, 15, 3);
+
+    function attackZ() {
+      zilot.attack(marine); // 질럿이 마린을 공격
+    }
+
+    function attackM() {
+      marine.attack(zilot); // 마린이 질럿을 공격
+    }
+  </script>
+
+</body>
+</html>

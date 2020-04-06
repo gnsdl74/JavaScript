@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HW1</title>
+</head>
+<body>
+	<!-- 자바스크립트를 이용한 구구단 출력 -->
+	<div id="output"></div>
+	<div id="star"></div>
+
+	<script type="text/javascript">
+    var output = document.getElementById('output');
+    var star = document.getElementById('star');
+
+    for (var i = 1; i < 10; i++) {
+      output.innerHTML += i + '단<br>';
+      output.innerHTML += '<hr>';
+      for (var j = 1; j < 10; j++) {
+        output.innerHTML += i + ' * ' + j + ' = ' + (i * j) + '<br>';
+      }
+      output.innerHTML += '<br>';
+    }
+
+    // 별상자 찍기
+    for (var row = 1; row <= 5; row++) {
+      for (var col = 1; col <= 5; col++) {
+        if (row == 1 || row == 5) {
+          star.innerHTML += '*';
+
+        } else if (col == 1 || col == row || col == 5 || col == 5 - row + 1) {
+          star.innerHTML += '*';
+
+        } else {
+          star.innerHTML += ' ';
+        }
+      }
+      star.innerHTML += '<br>';
+    }
+  </script>
+
+</body>
+</html>

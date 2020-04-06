@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HW3</title>
+</head>
+<body>
+	<!-- 간단한 연락처프로그램 -->
+	<h1>연락처 프로그램</h1>
+	이름 : <input type="text" id="name"/><br>
+	연락처 : <input type="text" id="phone"/><br>
+	이메일 : <input type="text" id="email"/><br>
+	<br>
+	<button onclick="insert()">입력</button>
+	<button onclick="selectAll()">전체검색</button>
+	인덱스 : <input type="number" id="index"/>
+	<button onclick="deleteByIndex()">삭제</button>
+	<hr>
+	<div id="output"></div>
+	
+	<script type="text/javascript">
+	 // id를 통해 요소를 찾음
+	 var cname = document.getElementById('name');
+	 var cphone = document.getElementById('phone');
+	 var cemail = document.getElementById('email');
+	 var cindex = document.getElementById('index');
+	 var output = document.getElementById('output');
+	 
+	 // 전역 변수 선언
+	 var contact;
+	 var list = new Array(); // 배열 선언. []와 동일;
+	 
+	 function Contact(name, phone, email) {
+	   this.name = name;
+	   this.phone = phone;
+	   this.email = email;
+	 } // end Contact()
+	 
+	 function insert() {
+	   var name = cname.value;
+	   var phone = cphone.value;
+	   var email = cemail.value;
+	   contact = new Contact(name, phone, email);
+	   console.log(contact);
+	   list.push(contact);
+	   alert('연락처 추가 성공');
+	   /* output.innerHTML = '연락처 추가 성공<br>'; */
+	 } // end insert()
+	 
+	 function selectAll() {
+	   output.innerHTML = ''; // div 텍스트 초기화
+	   for(x in list) {
+	     output.innerHTML += x + '번째 연락처<br>';
+	     output.innerHTML += '이름 : ' + list[x].name + '<br>';
+	     console.log(list[x].name);
+	     output.innerHTML += '전화번호 : ' + list[x].phone + '<br>';
+	     console.log(list[x].phone);
+	     output.innerHTML += '이메일 : ' + list[x].email + '<br>';
+	     console.log(list[x].email);
+	     output.innerHTML += '<hr>';
+	   }
+	   if(x == list.length-1) {
+	     alert('전체 검색 완료');
+	   }
+	 } // end selectAll()
+	 
+	 function deleteByIndex() {
+	   var index = cindex.value;
+	   list.splice(index, 1);
+	   /* output.innerHTML = '연락처 삭제 성공<br>' */
+	   alert('연락처 삭제 성공');
+	 } // end deleteByIndex()
+	 // * 배열의 기존 요소를 삭제 또는 교체하거나 새 요소를 추가하여 배열의 내용 변경.
+	 // Array.prototype.splice(start)
+	 // opt 1. deleteCount : 배열에서 제거할 요소의 수
+	 // opt 2. item1, item2, ... : 배열에서 추가할 요소
+	 
+	 
+	 
+	 
+	 // list[index] = "";
+	</script>
+</body>
+</html>

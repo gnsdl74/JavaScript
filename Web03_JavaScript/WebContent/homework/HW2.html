@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>계산기</title>
+</head>
+<body>
+	<!-- 두 개의 숫자를 입력받아서 사칙연산을 하는 사이트 -->
+	<input type="number" id="firstNum">
+	<input type="number" id="secondNum">
+	<button onclick="add()">더하기</button>
+	<button onclick="sub()">빼기</button>
+	<button onclick="multi()">곱하기</button>
+	<button onclick="div()">나누기</button>
+	<div id="output"></div>
+
+	<script type="text/javascript">
+    // input 태그의 입력된 값(value)을 가져오기 위해서는 value 속성을 이용
+    var fNum = document.getElementById('firstNum');
+    var sNum = document.getElementById('secondNum');
+    var output = document.getElementById('output');
+    var result;
+
+    function add() { // 함수 안에서 값을 가져오는 형식이 좋음
+      fNum = parseInt(fNum.value, 10);
+      sNum = parseInt(sNum.value, 10);
+      
+      if (!isNaN(fNum) && !isNaN(sNum)) { // 둘다 숫자면
+        result = fNum + sNum;
+        // + 연산자 : 문자열을 연결하는 역할 그래서 parseInt()를 통해 숫자로 변환
+      } else { // 숫자가 아닌 경우
+        result = '숫자만 입력해주세요.';
+      }
+      output.innerHTML = 'result = ' + result + '<br>';
+    } // end add()
+
+    function sub(x, y) {
+      fNum = parseInt(fNum.value, 10);
+      sNum = parseInt(sNum.value, 10);
+      
+      if (isNaN(fNum) || isNaN(sNum)) { // 하나라도 숫자가 아니면
+        result = '숫자만 입력해주세요.';
+      } else { // 둘 다 숫자인 경우
+        result = fNum - sNum;        
+      }
+      output.innerHTML = 'result = ' + result + '<br>';
+    } // end sub()
+
+    function multi(x, y) {
+      fNum = parseInt(fNum.value, 10);
+      sNum = parseInt(sNum.value, 10);
+      
+      if (!isNaN(fNum) && !isNaN(sNum)) { // 둘다 숫자면
+        result = fNum * sNum;
+      } else { // 숫자가 아닌 경우
+        result = '숫자만 입력해주세요.';
+      }
+      output.innerHTML = 'result = ' + result + '<br>';
+    } // end multi()
+
+    function div(x, y) {
+      fNum = parseInt(fNum.value, 10);
+      sNum = parseInt(sNum.value, 10);
+      
+      if (!isNaN(fNum) && !isNaN(sNum)) { // 둘다 숫자면
+        if(sNum == 0) {
+          result = '0으로 나눌 수 없습니다.';
+        } else {
+          result = fNum / sNum;  
+        }
+
+      } else { // 숫자가 아닌 경우
+        result = '숫자만 입력해주세요.';
+      }
+      output.innerHTML = 'result = ' + result + '<br>';
+    } // end div()
+  </script>
+</body>
+</html>

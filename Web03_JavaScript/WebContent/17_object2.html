@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Object</title>
+</head>
+<body>
+	<h1>자바스크칩트 객체</h1>
+	<div id="output"></div>
+	
+	<script type="text/javascript">
+	  var person = {
+	   name : '아이유',
+	   phone : {
+	     home : '02-1234-5678',
+	     mobile : '010-1234-5678'
+	   }, /* object 객체 */
+	   email : ['iu@gmail.com', 'test@test.com'], /* 배열 */
+	   information : function() {
+	     return this.name + ", " + this.phone.home + ", " + this.email[0];
+	     // this : person 객체
+	   } /* method */
+	  };
+	
+	  var output = document.getElementById('output');
+	  
+	  output.innerHTML += "이름 : " + person.name + '<br>';
+	  output.innerHTML += "집전화 : " + person.phone.home + '<br>';
+	  output.innerHTML += "핸드폰 : " + person.phone['mobile'] + '<br>';
+	  output.innerHTML += "이메일1 : " + person.email[0] + '<br>';
+	  output.innerHTML += "이메일2 : " + person.email[1] + '<br>';
+	  output.innerHTML += "정보 : " + person.information + '<br>'; // 함수 전체가 출력(비정상)
+	  output.innerHTML += "정보 : " + person.information() + '<br>'; // 함수의 기능이 출력(정상)
+	  // 프로퍼티에 함수가 사용된 경우에는 프로퍼티에 ()를 꼭 붙여준다.
+	  output.innerHTML += '<hr>';
+	  
+	  // JavaScript의 this 키워드 :
+	  // - 메소드 안에서의 this : 객체 자신
+	  // - 함수 안에서의 this : 전역 객체
+	  // - 이벤트 안에서의 this : 이벤트를 받은 요소
+	  function Person(name, phone, email) {
+	  	this.name = name;
+	  	this.phone = phone;
+	  	this.email = email;
+	  }
+	  
+	  function Phone(home, mobile) {
+	    this.home = home;
+	    this.mobile = mobile;
+	  }
+	  
+	  var phone1 = new Phone('02-1111-2222', '010-1111-2222');
+	  var person2 = new Person('고', phone1, ['go@sword.com', 'gil@test.com']);
+	  var person3 = new Person('홍', new Phone('02-1234-5678', '010-1234-5678'), ['hong@test.com', 'gil@gmail.com']);
+	  
+	  output.innerHTML += person2.name + '<br>';
+	  output.innerHTML += person2.phone + '<br>';
+	  output.innerHTML += person2.email + '<br>';
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	</script>
+</body>
+</html>

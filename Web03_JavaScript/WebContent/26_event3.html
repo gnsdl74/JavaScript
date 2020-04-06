@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Event</title>
+<style type="text/css">
+h1 {
+	background-color: pink;
+	color: white;
+	font-size: 2.5em; /* 250% */
+	text-align: center;
+}
+
+.main-panel {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	background-color: lightgreen;
+	color: white;
+}
+
+.sub-panel {
+	font-size: 1em;
+	font-weight: normal;
+	color: black;
+	text-align: left;
+	border-top: 1px solid white;
+	background-color: lavender;
+	display: none;
+}
+</style>
+</head>
+<body>
+	<!-- 
+		visibility는 공간은 있고 콘텐트를 보이거나 숨김.
+		display는 공간을 없애거나 블록형태로 만드는 등 변환함.
+	 -->
+	<h1 style="visibility: hidden;" id="title">Visibility/Display 속성
+		변경</h1>
+	<button type="button" onclick="hide()">Hide</button>
+	<button type="button" onclick="show()">Show</button>
+	<button type="button" onclick="none()">Display None</button>
+	<button type="button" onclick="block()">Display Block</button>
+	<hr>
+
+	<div class="main-panel" onclick="toggleSub(this)">
+		메인 판넬 - 클릭하세요!
+		<div class="sub-panel">
+			<ul>
+				<li><a href="https://www.google.com">구글</a></li>
+				<li><a href="https://www.daum.net">다음</a></li>
+				<li><a href="https://www.naver.vom">네이버</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+    var title = document.getElementById('title');
+
+    function hide() {
+      title.style.visibility = 'hidden';
+    } // end hide()
+
+    function show() {
+      title.style.visibility = 'visible';
+    } // end show()
+
+    function none() {
+      title.style.display = 'none';
+    } // end none()
+
+    function block() {
+      title.style.display = 'block';
+    } // end block()
+    
+    function toggleSub(parent) {
+      // .sub-panel 요소(element)를 찾음
+      // var sub = document.getElementsByClassName('sub-panel')[0];
+      // var sub = document.querySelector('.sub-panel');
+      var sub = parent.firstElementChild;
+      if(sub.style.display === 'none' || sub.style.display === '') {
+        // display : none; 상태면, 보이게
+        sub.style.display = 'block';
+      } else {
+        // display : block; 상태면, 안보이게
+        sub.style.display = 'none';
+      }
+      
+    }
+  </script>
+</body>
+</html>
